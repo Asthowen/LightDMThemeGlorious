@@ -5,6 +5,5 @@ class LoginFade {
 
 	showLoginFade(icon, message) {
 		this._goodbyeScreen.classList.add('screen-dark-show');
-		this._goodbyeScreenVisible = true;
 	}
 }

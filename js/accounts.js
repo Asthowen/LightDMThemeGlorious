@@ -85,7 +85,6 @@ class Accounts {
 	_setAccountDefaultOnStartUp() {
 		let defaultAccountItem = document.querySelector(`#button-accounts-item-${this._defaultUser}`);
 		if (!defaultAccountItem) {
-			// If the should've been default user does not exist
 			defaultAccountItem = document.querySelector(`#button-accounts-item-${this._usersObject[parseInt(0, 10)].username}`);
 			this._setAccountDefaultOnStartUpFallback();
 		}
@@ -107,8 +106,6 @@ class Accounts {
 	}
 
 	_populateAccountsList() {
-		console.log("Users", this._usersObject);
-		//console.log("Users", lightdm.users); // This should be the same as above
 		for (let i = 0; i < this._usersObject.length; i++){
 			let userObject = {
 				'button': document.createElement('button'),
@@ -130,7 +127,7 @@ class Accounts {
 				`
 				<div class='button-sidebar-item-image-parent' id='button-accounts-item-image-parent'>
 					<img class='button-sidebar-item-image' id='button-accounts-item-image' draggable='false' src='${userProfileImage}' 
-					onerror='this.src="${userProfileImageFallBack}"'></img>
+					onerror='this.src="${userProfileImageFallBack}"' alt="User profil image" />
 				</div>
 				<div class='button-sidebar-item-name' id='button-accounts-item-name'>${userDisplayName}</div>
 				`

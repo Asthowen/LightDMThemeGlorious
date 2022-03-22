@@ -1,4 +1,3 @@
-
 class Authenticate {
 	constructor() {
 		this._passwordBox = document.querySelector('#input-password-box');
@@ -7,18 +6,38 @@ class Authenticate {
 		this._passwordInputContainer = document.querySelector('#input-password-container');
 		this._tooltipPassword = document.querySelector('#tooltip-password');
 		this._password = '';
-		
 		this._init();
-		this._language = new Language;		
 	}
 
 	_returnRandomErrorMessages() {
-		const errorMessages = this._language._getErrorMessages();
+		const errorMessages = [
+			'Authentication failed!',
+			'You look stoopid.',
+			'This incident will be reported.',
+			'Why are you the way that you are?',
+			'This will self-destruct in 5 seconds!',
+			'Uhhh... are you sure you know what you are doing?',
+			'“You miss 100% of the shots you don\'t take – Wayne Gretzky – Michael Scott”',
+			'Get out of there, it\'s gonna blow!',
+			'I can do this all day.',
+			'You father is right. You are a disappointment...',
+			'PAM will lock you out...'
+		];
 		return errorMessages[Math.floor(Math.random() * errorMessages.length)];	
 	}
 
 	_returnRandomSuccessfulMessages() {
-		const errorMessages = this._language._getSuccessfulMessages();
+		const errorMessages = [
+			'Authentication success! Logging in!',
+			'Logging in! Biatch',
+			'Don\'t watch too much porn, bro.',
+			'Splish! Splash! Your password is trash!',
+			'Looking good today~',
+			'What are you doing, stepbro?~',
+			'You are someone\'s reason to smile.',
+			'Finally, someone with a good amount of IQ!',
+			'Please, don\'t watch porn.'
+		];
 		return errorMessages[Math.floor(Math.random() * errorMessages.length)];
 	}
 
@@ -69,10 +88,8 @@ class Authenticate {
 		// Add a delay before unlocking
 		setTimeout(
 			() => {
-				var defSession = String(sessions.getDefaultSession());
-				console.log(defSession);
 				this._buttonAuthenticate.classList.remove('authentication-success');
-				lightdm.start_session(defSession);
+				lightdm.start_session_sync(String(sessions.getDefaultSession()));
 				this._tooltipPassword.classList.remove('tooltip-success');
 			},
 			1000
@@ -114,8 +131,7 @@ class Authenticate {
 		this._buttonAuthenticate.addEventListener(
 			'click',
 			() => {
-				//console.log(lightdm.in_authentication);
-				//console.log("Auth: " + lightdm.is_authenticated);
+				console.log(lightdm.in_authentication);
 				this._authFailedRemove();
 				this._password = this._passwordInput.value;
 				lightdm.respond(String(this._password));

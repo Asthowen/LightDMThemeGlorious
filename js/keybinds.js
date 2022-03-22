@@ -9,7 +9,6 @@ class KeyBinds {
 		this._inputSessionsKey = document.querySelector('#sidebar-settings-sessions-key-input');
 		this._inputPowerKey = document.querySelector('#sidebar-settings-power-key-input');
 		this._inputAccountsKey = document.querySelector('#sidebar-settings-accounts-key-input');
-		this._inputCloseKey = document.querySelector('#sidebar-settings-close-key-input');
 		this._modifierKeys = [ 'Alt', 'Control', 'OS', 'Meta', 'Super' ];
 		this._keyBindObj = {};
 		this._init();
@@ -43,7 +42,6 @@ class KeyBinds {
 		this._inputSessionsKey.value = '';
 		this._inputPowerKey.value = '';
 		this._inputAccountsKey.value = '';
-		this._inputCloseKey.value = '';
 	}
 
 	_updateKeyBindInputsPlaceholders() {
@@ -59,8 +57,6 @@ class KeyBinds {
 		this._inputSessionsKey.placeholder = kbdObj.defaultSessionKey;
 		this._inputPowerKey.placeholder = kbdObj.defaultPowerKey;
 		this._inputAccountsKey.placeholder = kbdObj.defaultAccountsKey;
-		this._inputCloseKey.placeholder = kbdObj.defaultCloseKey;
-		// Call to clear inputs value
 		this._clearKeyBindInputsValues();
 	}
 
@@ -71,7 +67,6 @@ class KeyBinds {
 			'defaultSessionKey': this._inputSessionsKey.value || this._storageGetItem('defaultSessionKey') || 'e',
 			'defaultPowerKey': this._inputPowerKey.value || this._storageGetItem('defaultPowerKey') || 'x',
 			'defaultAccountsKey': this._inputAccountsKey.value || this._storageGetItem('defaultAccountsKey') || 'y',
-			'defaultCloseKey': this._inputCloseKey.value || this._storageGetItem('defaultCloseKey') || 'Escape'
 		};
 		this._updateKeyBindInputsPlaceholders();
 	}
@@ -107,8 +102,7 @@ class KeyBinds {
 			this._inputSidebarKey,
 			this._inputSessionsKey,
 			this._inputPowerKey,
-			this._inputAccountsKey,
-			this._inputCloseKey
+			this._inputAccountsKey
 		];
 
 		for (let i = 0; i < keyEventsObj.length; i++) {

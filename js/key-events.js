@@ -6,7 +6,6 @@ class KeyEvents {
 		this._sessionsKey = null;
 		this._powerKey = null;
 		this._sidebarKey = null;
-		this._usersKey = null;
 		this._closeKey = null;
 
 		this._init();
@@ -66,13 +65,6 @@ class KeyEvents {
 					return;
 				}
 
-				if ((e.key === ' ') || (e.code === 'Space') || (e.code === 'NumpadEnter')) {
-					if (greeterScreen.getGreeterVisibility()) {
-						greeterScreen.toggleGreeter();
-						return;
-					}
-				}
-
 				if (e.key === this._closeKey) {
 					e.preventDefault();
 
@@ -91,7 +83,6 @@ class KeyEvents {
 						return;
 					}
 
-					greeterScreen.toggleGreeter();
 					this._passwordInput.value = '';
 					return;
 				}
